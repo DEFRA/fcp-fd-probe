@@ -1,10 +1,10 @@
 services:
-  ffc-template-node:
+  fcp-fd-probe:
     build:
       context: .
       target: production
-    image: ffc-template-node
-    container_name: ffc-template-node
+    image: fcp-fd-probe
+    container_name: fcp-fd-probe
     environment:
-      APPINSIGHTS_CLOUDROLE: ffc-template-node-local
+      APPINSIGHTS_CLOUDROLE: fcp-fd-probe-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
