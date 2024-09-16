@@ -1,31 +1,34 @@
-# Required values to support CI pipeline
 environment: production
 environmentCode:
 name: fcp-fd-probe
 namespace: fcp-fd
 workstream: fcp-fd
 image: fcp-fd-probe
+labels:
+  component: service
 
 appInsights:
   connectionString:
 
-labels: {}
+containerConfigMap:
+  name: fcp-fd-probe-config-map
 
-containerConfigMap: {}
-
-containerSecret: {}
+containerSecret:
+  name: fcp-fd-probe-container-secret
+  type: Opaque
 
 deployment: {}
 
-port: &port 3000
-
 container:
-  resourceTier: M
-  port: *port
+  requestMemory: 100Mi
+  requestCpu: 100m
+  limitMemory: 100Mi
+  limitCpu: 100m
+  port: 3000
 
 livenessProbe:
   path: /healthz
-  port: *port
+  port: 3000
   initialDelaySeconds: 20
   periodSeconds: 10
   failureThreshold: 3
@@ -33,14 +36,8 @@ livenessProbe:
 
 readinessProbe:
   path: /healthy
-  port: *port
+  port: 3000
   initialDelaySeconds: 30
   periodSeconds: 10
   failureThreshold: 3
   timeoutSeconds: 5
-
-# Enable if Managed Identity is required, ensure the clientID and resourceID are set in Platform Configuration
-azureIdentity:
-  enabled: false
-  clientID: not-a-real-clientID
-  resourceID: not-a-real-resourceID
