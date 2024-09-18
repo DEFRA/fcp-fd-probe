@@ -8,3 +8,10 @@ services:
     environment:
       APPINSIGHTS_CLOUDROLE: fcp-fd-probe-local
       APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+
+  fcp-fd-probe-postgres:
+    image: postgres:11.4-alpine
+    environment:
+      POSTGRES_DB: fcp_fd_probe
+      POSTGRES_PASSWORD: ppp
+      POSTGRES_USERNAME: postgres
