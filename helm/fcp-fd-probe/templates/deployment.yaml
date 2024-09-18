@@ -1,0 +1,8 @@
+{{- include "ffc-helm-library.deployment" (list . "fcp-fd-probe.deployment") -}}
+{{- define "fcp-fd-probe.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "ffc-helm-library.container" (list . "fcp-fd-probe.container") }}
+{{- end -}}

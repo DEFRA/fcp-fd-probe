@@ -1,6 +1,7 @@
 services:
-  ffc-template-node:
+  fcp-fd-data:
     command: >
       sh -c "npm run test:watch"
     volumes:
       - ./.git:/home/node/.git
+      
