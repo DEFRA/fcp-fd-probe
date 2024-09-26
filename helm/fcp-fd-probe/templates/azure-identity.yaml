@@ -1,0 +1,3 @@
+{{- include "ffc-helm-library.azure-identity" (list . "fcp-fd-probe.azure-identity") -}}
+{{- define "fcp-fd-probe.azure-identity" -}}
+{{- end -}}
