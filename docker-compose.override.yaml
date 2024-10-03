@@ -8,8 +8,8 @@ services:
     image: fcp-fd-probe-development
     container_name: fcp-fd-probe-development
     ports:
-      - "3021:3021"
-      - "9021:9229"
+      - "3040:3040"
+      - "9040:9229"
     volumes:
       - ./app:/home/node/app
       - ./package.json:/home/node/package.json
